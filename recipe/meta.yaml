@@ -1,4 +1,4 @@
-{% set version = "0.12.8" %}
+{% set version = "0.13.1" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,11 +10,11 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/ffbase_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/ffbase/ffbase_{{ version }}.tar.gz
-  sha256: 18622f799641fb624dc274cdd31c52c9bd77c8f1f63fbb1dc636be80673b5356
+  sha256: 1db537607d3385a05d1895e7b06092cade584a73e43e227c1e987004ed06d44e
 
 build:
   merge_build_host: true  # [win]
-  number: 1
+  number: 0
   rpaths:
     - lib/R/lib/
     - lib/
