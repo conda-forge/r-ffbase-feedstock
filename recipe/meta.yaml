@@ -1,4 +1,4 @@
-{% set version = "0.13.1" %}
+{% set version = "0.13.3" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,7 +10,7 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/ffbase_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/ffbase/ffbase_{{ version }}.tar.gz
-  sha256: 1db537607d3385a05d1895e7b06092cade584a73e43e227c1e987004ed06d44e
+  sha256: b3f61f80ba6851130247779786903d42a24ee5219aa24556c8470aece8a2e6b6
 
 build:
   merge_build_host: true  # [win]
@@ -21,7 +21,7 @@ build:
 
 requirements:
   build:
-    - {{ compiler('c') }}        # [not win]
+    - {{ compiler('c') }}              # [not win]
     - {{ compiler('m2w64_c') }}        # [win]
     - {{ posix }}filesystem        # [win]
     - {{ posix }}make
@@ -32,13 +32,13 @@ requirements:
     - r-base
     - r-bit
     - r-fastmatch
-    - r-ff >=2.2_11
+    - r-ff >=4.0
   run:
     - r-base
     - {{ native }}gcc-libs         # [win]
     - r-bit
     - r-fastmatch
-    - r-ff >=2.2_11
+    - r-ff >=4.0
 
 test:
   commands:
@@ -47,10 +47,11 @@ test:
 
 about:
   home: http://github.com/edwindj/ffbase
-  license: GPL-3
+  license: GPL-3.0-only
   summary: Extends the out of memory vectors of 'ff' with statistical functions and other utilities to ease their usage.
   license_family: GPL3
-  license_file: {{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3
+  license_file:
+    - {{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3
 
 extra:
   recipe-maintainers:
